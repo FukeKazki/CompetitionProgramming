@@ -9,38 +9,27 @@
 using namespace std;
 
 //最大公約数
-int gcd(int a, int b) {
-    if(a < b) {
-        swap(a, b);
-    }
-    int r = a % b;
-    while(r != 0) {
-        a = b;
-        b = r;
-        r = a % b;
-    }
-    return b;
+int gcd(int x, int y) {
+    if (y == 0) return x;
+    return gcd(y, x%y);
 }
 
 int main() {
-    int N;
-    cin >> N;
-    int A[N];
-    int tG = 0;
-    for(int i = 0; i < N; i++) cin >> A[i];
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for(int i = 0; i < n; i++) cin >> a[i];
 
-    sort(A, A+N, greater<int>());
-    // A[N] = A[0];
-
-    // for(int i = 0; i < N-1; i++) {
-    //     for(int j = i+1; j < N; j++) {
-    //         int tmp = gcd(A[i], A[j]);
-    //         tG = max(tG, tmp);
-    //     }
-    // }
-    if(A[N-1] % 2 != 0) A[N-1] += 1;
-    tG = gcd(A[0], A[N-1]);
-    cout << tG << endl;
-    
+    vector<int> l(n), r(n);
+    //累積和
+    //前からi番目までの累積和
+    for(int i = 0; i < n-1; i++) l[i+1] = gcd(l[i], a[i]); 
+    //後ろからi番目までの累積和
+    for(int i = n-1; i >= 1; --i) r[i-1] = gcd(r[i], a[i]);
+    int ans = 1;
+    //消したi番目の一個前と一個後のgcdを計算
+    //最初を0にすることで 例) iが2のときは2を求めればよくなる
+    for(int i = 0; i < n; i++) ans = max(ans, gcd(l[i], r[i]));
+    cout << ans << endl;
     return 0;
 }

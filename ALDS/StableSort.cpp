@@ -5,9 +5,7 @@
 using namespace std;
 
 void BubbleSort(string* array, int N) {
-    for(int i = 0; i < N; i++) {
-        for(int j = N-1; j > i; j--) if (array[j][1] < array[j-1][1]) swap(array[j], array[j-1]);
-    }
+    for(int i = 0; i < N; i++) for(int j = N-1; j > i; j--) if (array[j][1] < array[j-1][1]) swap(array[j], array[j-1]);
 }
 void SelectionSort(string* array, int N) {
     for(int i = 0; i < N; i++) {

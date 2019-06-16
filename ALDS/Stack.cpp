@@ -9,9 +9,14 @@ using namespace std;
 //stackの0番目は空にする
 int top = 0, S[10000];
 
-void push(int x) { S[++top] = x; }
+void push(int x) {
+    // 先にtopを+1してxを代入する
+    S[++top] = x; 
+}
 
 int pop() {
+    // 現在のtopの位置の値を返す
+    // その後topを-1する
     int result = S[top];
     top--;
     return result;
@@ -21,12 +26,14 @@ int pop() {
 int main() {
     int a, b;
     char s[1000];
+    // 入力がある間処理を行う EOFで終了
     while(cin >> s) {
         if(s[0] == '+') {
             a = pop();
             b = pop();
             push(a + b);
         } else if(s[0] == '-') {
+            // 引き算の順序に気をつける
             b = pop();
             a = pop();
             push(a - b);
@@ -35,13 +42,16 @@ int main() {
             b = pop();
             push(a * b);
         } else if(s[0] == '/') {
-            a = pop();
+            // 割り算の順序に気をつける
             b = pop();
+            a = pop();
             push(a / b);
         } else {
+            // 演算子でない場合は入力された値を数値としてpushする
             push(atoi(s));
         }
     }
+    //　最後に取り出して表示する
     printf("%d\n", pop());
     return 0;
 }

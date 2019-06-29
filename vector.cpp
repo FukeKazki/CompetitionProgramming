@@ -13,6 +13,12 @@ int main() {
     vector<int> org{4, 5, 6};
     cout<< a.size() << org.size() << endl;
 
+    vector<int> v = {3, 1, 4, 2, 5};
+    sort(v.begin(), v.end());
+    for_each(v.begin(), v.end(), [](int x) {
+        cout << x << endl;
+    });
+
 
     return 0;
 }
@@ -22,3 +28,7 @@ int main() {
 //a.back() 末尾を参照
 //a.push_back(a) 末尾にaを追加
 //a.pop_back(); 末尾の要素を削除
+/*
+v.assing(first, lase) :void
+first-lastの範囲のデータをvectorに代入できる
+ */

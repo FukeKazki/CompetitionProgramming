@@ -5,9 +5,15 @@ using namespace std;
 int A[1000000], n;
 /*
 
-|left| | | |mid| | | |right|
+|left| | | |mid| | | | |right
        0 <--- ---> n
+
  */
+/**
+    二分探索
+    @param key : int
+    @return boolean
+*/
 int binarySearch(int key) {
     int left = 0;
     int right = n;

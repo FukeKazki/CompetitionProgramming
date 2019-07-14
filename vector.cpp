@@ -19,6 +19,37 @@ int main() {
         cout << x << endl;
     });
 
+    // 2次元配列
+    /**
+     * vector<vector<型>> 変数名(要素1, vector<型>(要素2, 初期値))
+     * 初期値は省略可能
+     * 変数名.at(i).at(j) でアクセス
+     * 変数名.size() で i の大きさ
+     * 変数名.at(0).size() で j の大きさ
+     */
+    vector<vector<int>> data = {
+        {7, 4, 0, 8},
+        {2, 0, 3, 5},
+        {6, 1, 7, 0},
+    };
+
+    vector<vector<int>> data2(3, vector<int>(4));
+
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 4; j++) {
+            cin >> data2.at(i).at(j);
+        }
+    }
+
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 4; j++) {
+            if(j != 0) cout << " ";
+            cout << data2.at(i).at(j);
+        }
+        cout << endl;
+    }
+
+
 
     return 0;
 }

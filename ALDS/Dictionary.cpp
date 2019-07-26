@@ -23,7 +23,8 @@ long long getKey(char str[]) {
     for(int i = 0; i < strlen(str); i++) {
         // 五進数にする 衝突を防ぐ
         sum += p*(getChar(str[i]));
-        cout << "getKey: " << p << " : " << sum << endl;
+        if(i != 0) cout << "+" << endl;
+        cout << p << " * " << getChar(str[i]) << " : " << sum << endl;
         p *= 5;
     }
     return sum;
@@ -37,9 +38,8 @@ int find(char str[]) {
     for(int i = 0; ; i++) {
         // 計算結果は i に依存する h2 ずつずれていく
         long long h = (h1(key) + i*h2(key)) % M;
-        if(strcmp(H[h], str) == 0) {
-            return 1;
-        } 
+        // 同じ文字列だったら 0 が返ってくる
+        if(strcmp(H[h], str) == 0) return 1;
         else if(strlen(H[h]) == 0) return 0;
     }
 }

@@ -11,9 +11,10 @@ typedef long long ll;
  * C問以降は ll を使う.
  * double型にするのを忘れない.
  * nC2の求め方 (1/2)*n*(n-1)
+ * vector<型> 変数名(要素数, 初期値)
  */
 int main()
 {
-
+    
     return 0;
 }

@@ -31,13 +31,10 @@ void merge(int A[], int n, int left, int mid, int right) {
 void mergeSort(int A[], int n, int left, int right) {
     if(left+1 < right) {
         int mid = (left + right) / 2;
-	// 左側部分のソート
         cout << "left divide!! ";
 	mergeSort(A, n, left, mid);
-	// 右側部分のソート
         cout << "right divide!! ";
 	mergeSort(A, n, mid, right);
-	// 左と右の結合
 	cout << "merge!! ";
 	merge(A, n, left, mid, right);
     }
